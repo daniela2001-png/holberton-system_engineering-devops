@@ -1,34 +1,25 @@
 #!/usr/bin/env bash
 
 # start stop restart init
-start() {
+if [ "$1" == "start" ]; then
     sudo ./manage_my_process &
     echo "$!" > /var/run/my_process.pid
     echo "manage_my_process started"
-}
 
-stop() {
+elif [ "$1" == "stop" ]; then
     # eliminamos el pid del proceso manage_process
     sudo kill "$(cat /var/run/my_process.pid)"
     sudo rm /var/run/my_process.pid
     echo "manage_my_process stopped"
-    
-}
 
-restart() {
+elif [ "$1" == "restart" ]; then
     sudo kill "$(cat /var/run/my_process.pid)"
     # eliminamos el pid del proceso manage_process
     sudo rm /var/run/my_process.pid
     sudo ./manage_my_process &
     echo "$!" > /var/run/my_process.pid
     echo "manage_my_process restarted"
-}
 
-case "$1" in
-    start) start ;;
-    stop)  stop;;
-    restart) restart;;
-    *) echo "Usage: manage_my_process {start|stop|restart}"  >&2
-        exit 1
-    ;;
-esac
+else
+    echo "Usage: manage_my_process {start|stop|restart}"
+fi
