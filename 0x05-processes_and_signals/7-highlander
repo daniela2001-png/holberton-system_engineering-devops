@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# usando el comnado trap que recibe señales (15-SIGTERM)
+trap 'echo "I am invincible!!!"' SIGTERM
+while true; do
+ echo "To infinity and beyond"
+ sleep 1
+done
