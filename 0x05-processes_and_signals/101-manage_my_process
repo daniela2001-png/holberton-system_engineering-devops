@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+start() {
+   echo "manage_my_process started"
+   sudo ./manage_my_process &
+   echo "$!" > /var/run/my_process.pid
+}
+
+stop() {
+    echo "manage_my_process stopped"
+    # eliminamos el pid del proceso manage_process
+    sudo kill "$(cat /var/run/my_process.pid)"
+    sudo rm /var/run/my_process.pid
+}
+
+restart() {
+    sudo kill "$(cat /var/run/my_process.pid)"
+    # eliminamos el pid del proceso manage_process
+    sudo rm /var/run/my_process.pid
+    sudo ./manage_my_process &
+    echo "$!" > /var/run/my_process.pid
+    echo "manage_my_process restarted"
+}
+
+case "$1" in
+   start) start ;;
+   stop)  stop;;
+   restart) restart;;
+   *) echo "Usage: manage_my_process {start|stop|restart}"  >&2
+      exit 1
+      ;;
+esac
