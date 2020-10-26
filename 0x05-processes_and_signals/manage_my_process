@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
-# creamos el loop infinito
-
-while true;
+# manage my process
+while :
 do
-    sudo bash -c "echo I am alive! >> /tmp/my_process"
+    echo "I am alive!" >> /tmp/my_process
     sleep 2
 done
