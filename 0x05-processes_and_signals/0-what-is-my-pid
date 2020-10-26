@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# este script muestra el proceso PID
+echo $$

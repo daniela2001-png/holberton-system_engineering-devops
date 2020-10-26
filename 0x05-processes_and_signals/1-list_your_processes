@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# este script muestra la lista de procesos con ps
+ps -aux

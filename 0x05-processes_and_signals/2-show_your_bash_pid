@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# este script muestra la lista de procesos con ps
+# shellcheck disable=SC2009
+ps -aux | grep "bash"
