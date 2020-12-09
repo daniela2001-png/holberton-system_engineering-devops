@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# fixing the error! the error was that apche is not running!
+sudo service apache2 start
