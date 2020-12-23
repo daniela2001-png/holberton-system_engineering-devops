@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# Configure your domain zone so that the subdomain www points to your load-balancer IP (lb-01). Let’s also add other subdomains to make our life easier, and write a Bash script that will display information about subdomains.
-
+# Configure your domain zone so that the subdomain www points to your load-balancer IP (lb-01)
 get_info () {
 
     dominio="$1"
@@ -22,5 +21,4 @@ get_info () {
         dig $sub.$dominio | grep -A1 'ANSWER SECTION:' | tail -n 1 | awk '{print " is a " $4 " record and points to " $5}'
     done
 }
-
 get_info "$1" "$2"
