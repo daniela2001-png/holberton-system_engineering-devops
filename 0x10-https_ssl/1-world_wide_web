@@ -1,24 +1,17 @@
 #!/usr/bin/env bash
 # Configure your domain zone so that the subdomain www points to your load-balancer IP (lb-01)
+# shellcheck disable=SC2086
 get_info () {
 
-    dominio="$1"
     
-    #verifico si pasaron un subdomain
-    if [ "$2" ]
-    then
-        # si es ais lo seteamos
-	    subdomain="$2"
-    else
-        # sino asigno el valor
-	    subdomain="www lb-01 web-01 web-02"
+    if [ $# -eq 1 ]; then
+        subdomain="www.$1 lb-01.$1 web-01.$1 web-02.$1"
+    elif [ $# -eq 2 ]; then
+        subdomain="$2.$1"
     fi
-    # recorremos cada subdomain
-    for sub in $subdomain
-    do
-	    echo -n "The subdomain $sub"
-	    # con dig saco toda la info de ese dns y la organizo con tail y awk
-        dig "$sub.$dominio" | grep -A1 'ANSWER SECTION:' | tail -n 1 | awk '{print " is a " $4 " record and points to " $5}'
-    done
+    if [ $# -eq 0 ]; then
+        dig $subdomain | awk '/ANSWER SECTION:/ { getline; split($1, a, "."); print "The subdomain", a[1], "is a", "$4", "record and points to", "$5"}'
+    fi
+    exit 0
 }
 get_info "$1" "$2"
