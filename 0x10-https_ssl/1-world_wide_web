@@ -18,7 +18,7 @@ get_info () {
     do
 	    echo -n "The subdomain $sub"
 	    # con dig saco toda la info de ese dns y la organizo con tail y awk
-        dig $sub.$dominio | grep -A1 'ANSWER SECTION:' | tail -n 1 | awk '{print " is a " $4 " record and points to " $5}'
+        dig "$sub.$dominio" | grep -A1 'ANSWER SECTION:' | tail -n 1 | awk '{print " is a " $4 " record and points to " $5}'
     done
 }
 get_info "$1" "$2"
