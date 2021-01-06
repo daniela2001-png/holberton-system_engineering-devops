@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# dar todo tipos de permisos gays para darle un pinshe usuario a subprocesos de nginx amén!
+chown  nginx /etc/nginx/nginx.conf
+sudo service nginx restart
+sudo service nginx stop
+sudo -u nginx service nginx start
+sudo -u nginx service nginx restart
