@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# runuser or su in this case i will use the command sudo with the flag -u as user name as the ubuntu version is old :v
+sudo -u "$1" "whoami"
