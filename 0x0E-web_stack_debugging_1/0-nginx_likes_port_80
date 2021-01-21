@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# A Nginx le gusta el puerto 80
+sudo rm /etc/nginx/sites-enabled/default
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo service nginx restart

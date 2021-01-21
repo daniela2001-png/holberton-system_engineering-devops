@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# install and configure HaProxy in this server :3
+sudo apt-get -y update
+sudo apt-get -y install haproxy
+sudo cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.original
+sudo sed -i "\$ a\listen appname\n\tbind 0.0.0.0:80\n\tmode http\n\tstats enable\n\tbalance roundrobin\n\toption httpclose\n\toption forwardfor\n\tserver 1524-web-01 34.75.79.213:80 check\n\tserver 1524-web-02 35.243.180.246:80 check" /etc/haproxy/haproxy.cfg
+sudo service haproxy start
+sudo service haproxy restart

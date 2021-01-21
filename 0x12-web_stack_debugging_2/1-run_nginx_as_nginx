@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# dar todo tipos de permisos gays para darle un pinshe usuario a subprocesos de nginx amén!
+sudo pkill apache2
+sudo sed -i "s/80/8080/" /etc/nginx/sites-enabled/default
+sudo service nginx restart
+sudo chmod u+r /etc/nginx/nginx.conf
+sudo chown  nginx /etc/nginx/nginx.conf
+sudo service nginx restart
+sudo service nginx stop
+sudo -u nginx service nginx start
+sudo -u nginx service nginx restart
