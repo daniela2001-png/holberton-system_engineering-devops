@@ -1,0 +1,13 @@
+Las características de MySQL 5 soportan replicación asíncrona unidireccional: un servidor actúa como maestro y uno o más actúan como esclavos. (Esto contrasta con la replicación síncrona que es una característica de MySQL Cluster — consulte Capítulo 16, MySQL Cluster). El servidor maestro escribe actualizaciones en el fichero de log binario, y mantiene un índice de los ficheros para rastrear las rotaciones de logs. Estos logs sirven como registros de actualizaciones para enviar a los servidores esclavos. Cuando un esclavo se conecta al maestro, informa al maestro de la posición hasta la que el esclavo ha leído los logs en la última actualización satisfactoria. El esclavo recibe cualquier actualización que han tenido lugar desde entonces, y se bloquea y espera para que el master le envíe nuevas actualizaciones.
+
+Un esclavo servidor puede servir como maestro si quiere preparar una cadena de replicaciones de replicación.
+
+Tenga en cuenta que cuando usa replicación, todas las actualizaciones de las tablas que se replican deben realizarse en el servidor maestro. De otro modo, debe ser cuidadoso para evitar conflictos entre actualizaciones que hacen los usuarios a las tablas en el maestro y las actualizaciones que hacen en las tablas de los esclavos.
+
+La replicación unidireccional tiene beneficios para la robustez, velocidad, y administración del sistema:
+
+1) La robustez se incrementa con un escenario maestro/esclavo. En caso de problemas con el maestro, puede cambiar al esclavo como copia de seguridad.
+
+2) Puede conseguirse un mejor tiempo de respuesta dividiendo la carga de consultas de clientes a procesar entre los servidores maestro y esclavo. Se puede enviar consultas SELECT al esclavo para reducir la carga de proceso de conultas del maestro. Sin embargo, las sentencias que modifican datos deben enviarse siempre al maestro, de forma que el maestro y el esclavo no se desincronicen. Esta estrategia de balanceo de carga es efectiva si dominan consultas que no actualizan datos, pero este es el caso más habitual.
+
+3) Otro beneficio de usar replicación es que puede realizar copias de seguridad usando un servidor esclavo sin molestar al maestro. El maestro continúa procesando actualizaciones mientras se realiza la copia de seguridad. Consulte Sección 5.8.1, “Copias de seguridad de bases de datos”.
