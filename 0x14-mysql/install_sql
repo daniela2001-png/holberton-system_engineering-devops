@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Configure apt repository
+wget http://repo.mysql.com/mysql-apt-config_0.8.9-1_all.deb
+sudo dpkg -i mysql-apt-config_0.8.9-1_all.deb
+
+# Install MySQL Server
+sudo apt-get update
+sudo apt-get install mysql-server
+
+# and finally pray for that the version will be equal to 5.7 :p
