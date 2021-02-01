@@ -19,15 +19,6 @@ if __name__ == "__main__":
         "https://jsonplaceholder.typicode.com/users", params=params)
     users = names_users.json()
 
-    completed_tasks = []
-    for task in todos:
-        if task["completed"] is True:
-            completed_tasks.append(task)
-    print("Employee {} is done with tasks({}/{}):".format(
-        users[0]["name"], len(completed_tasks), len(todos)))
-    for task in completed_tasks:
-        print("\t {}".format(task["title"]))
-
     with open('{}.csv'.format(argv[1]), 'w', newline='') as file:
         writer = csv.writer(file, quoting=csv.QUOTE_ALL)
         for task in todos:
