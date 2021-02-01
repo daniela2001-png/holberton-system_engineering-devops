@@ -19,8 +19,8 @@ if __name__ == "__main__":
         "https://jsonplaceholder.typicode.com/users", params=params)
     users = names_users.json()
 
-    with open('{}.csv'.format(argv[1]), 'w', newline='') as file:
-        writer = csv.writer(file, quoting=csv.QUOTE_ALL)
+    with open("{}.csv".format(argv[1]), 'w', newline='') as csvfile:
+        cvs_writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
         for task in todos:
-            writer.writerows([[task["userId"], users[0]["name"],
-                               task["completed"], task["title"]]])
+            cvs_writer.writerow([int(argv[1]), users[0]['username'],
+                                 task['completed'], task['title']])
