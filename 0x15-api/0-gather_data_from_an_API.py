@@ -1,11 +1,13 @@
 #!/usr/bin/python3
 """
-using the module requests
+using the module requests to get data
+of the API
 """
 from sys import argv
 import requests
 
 if __name__ == "__main__":
+
     params = {"userId": argv[1]}
     response_todo = requests.get(
         "https://jsonplaceholder.typicode.com/todos", params=params)
