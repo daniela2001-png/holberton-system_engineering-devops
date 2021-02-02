@@ -23,7 +23,7 @@ if __name__ == "__main__":
         my_dict = {}
         my_dict["task"] = task['title']
         my_dict["completed"] = task['completed']
-        my_dict["username"] = user[0]['username']
+        my_dict["username"] = users[0]['username']
         my_list.append(my_dict)
     json_obj = {}
     json_obj[argv[1]] = my_list
