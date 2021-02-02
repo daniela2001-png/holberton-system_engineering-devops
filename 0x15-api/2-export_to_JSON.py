@@ -19,7 +19,7 @@ if __name__ == "__main__":
         "https://jsonplaceholder.typicode.com/users", params=params)
     users = names_users.json()
     lista = []
-    my_dic = {"task": "", "completed": "", "username": ""}
+    my_dic = {}
     for task in todos:
         my_dic["task"] = task["title"]
         my_dic["completed"] = task["completed"]
