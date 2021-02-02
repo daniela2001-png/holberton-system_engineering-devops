@@ -18,14 +18,14 @@ if __name__ == "__main__":
     names_users = requests.get(
         "https://jsonplaceholder.typicode.com/users", params=params)
     users = names_users.json()
-    lista = []
+    my_list = []
     for task in todos:
-        my_dic = {}
-        my_dic["task"] = task["title"]
-        my_dic["completed"] = task["completed"]
-        my_dic["username"] = users[0]["name"]
-        lista.append(my_dic)
-    data = {}
-    data[argv[1]] = lista
-    with open("{}.json".format(argv[1]), "w") as json_file:
-        json.dump(data, json_file)
+        my_dict = {}
+        my_dict["task"] = task['title']
+        my_dict["completed"] = task['completed']
+        my_dict["username"] = user[0]['username']
+        my_list.append(my_dict)
+    json_obj = {}
+    json_obj[sys.argv[1]] = my_list
+    with open("{}.json".format(sys.argv[1]), 'w') as jsonfile:
+        json.dump(json_obj, jsonfile)
