@@ -3,8 +3,9 @@
 using the module requests to get data
 of the API
 """
-from sys import argv
 import requests
+from sys import argv
+
 
 if __name__ == "__main__":
 
@@ -20,7 +21,7 @@ if __name__ == "__main__":
 
     completed_tasks = []
     for task in todos:
-        if task["completed"] is True:
+        if task["completed"]:
             completed_tasks.append(task)
     print("Employee {} is done with tasks({}/{}):".format(
         users[0]["name"], len(completed_tasks), len(todos)))
