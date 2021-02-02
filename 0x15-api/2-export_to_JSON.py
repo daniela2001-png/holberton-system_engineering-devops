@@ -4,8 +4,9 @@ using the module requests to get data
 of the API
 """
 from sys import argv
-import requests
 import json
+import requests
+
 
 if __name__ == "__main__":
 
