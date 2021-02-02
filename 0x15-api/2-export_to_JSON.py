@@ -26,6 +26,6 @@ if __name__ == "__main__":
         my_dict["username"] = user[0]['username']
         my_list.append(my_dict)
     json_obj = {}
-    json_obj[sys.argv[1]] = my_list
+    json_obj[argv[1]] = my_list
     with open("{}.json".format(sys.argv[1]), 'w') as jsonfile:
         json.dump(json_obj, jsonfile)
