@@ -25,6 +25,7 @@ if __name__ == "__main__":
         my_dic["completed"] = task["completed"]
         my_dic["username"] = users[0]["name"]
         lista.append(my_dic)
-    data = {argv[1]: lista}
+    data = {}
+    data[argv[1]] = lista
     with open("{}.json".format(argv[1]), "w") as json_file:
         json.dump(data, json_file)
