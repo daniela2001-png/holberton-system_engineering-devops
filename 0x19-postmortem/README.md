@@ -8,7 +8,7 @@ Hello, here I share the **link of my article on LinkedIn about my first report**
 
 ------------
 
- **Author :** <a herf="https://www.linkedin.com/in/daniela-morales-89049b199/">Daniela Morales</a>
+## **Author :** <a href="https://www.linkedin.com/in/daniela-morales-89049b199/">Daniela Morales</a>
  
 
 ------------
